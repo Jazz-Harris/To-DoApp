@@ -16,7 +16,7 @@ import {
 import axios from "axios";
 
 const style = {
-  bg: `w-full `,
+  bg: `w-screen `,
   banner: `w-screen bg-slate-800 text-white sm:text-sm md:text-1xl md:p-4 sm:h-12 font-bold top-0 md:h-10  flex items-center justify-center  p-2`,
   container: `bg-slate-100 bg-opacity-20 md:bg-opacity-100 max-w-[500px] md:w-full m-auto mt-20 rounded-md shadow-2xl p-4 z-0`,
   heading: `text-6xl font-bold text-center  mb-4 text-gray-800 p-2`,
