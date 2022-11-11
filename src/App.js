@@ -139,7 +139,7 @@ function App() {
             placeholder="Add Todo"
           />
           <button className={style.button}>
-            <AiOutlinePlus size={30} />
+            <AiOutlinePlus size={20} />
           </button>
         </form>
         <ul>
