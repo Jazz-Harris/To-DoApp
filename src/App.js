@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BsFillArrowRightCircleFill } from "react-icons/bs";
+import { AiFillCloseCircle } from "react-icons/ai";
 import Todo from "./Todo";
 import { db } from "./firebase";
 import {
@@ -18,7 +19,7 @@ import axios from "axios";
 const style = {
   bg: `w-screen `,
   banner: `w-screen bg-slate-800 text-white sm:text-sm md:text-1xl  p-6 sm:h-14 font-bold top-0   flex items-center justify-center  `,
-  container: `bg-slate-100 bg-opacity-20 md:bg-opacity-100 max-w-[500px] md:w-full m-auto mt-20 rounded-md shadow-2xl p-4 z-0`,
+  container: `bg-slate-100 bg-opacity-0 md:bg-opacity-100 md:max-w-[500px] md:w-full m-auto mt-20 rounded-md md:shadow-2xl p-4 z-0`,
   heading: `text-6xl font-bold text-center  mb-4 text-gray-800 p-2`,
   line: `bg-slate-500 w-25 mx-10 mb-4 h-1 rounded`,
   form: `flex justify-between m-5 px-4 z-2 `,
@@ -26,6 +27,7 @@ const style = {
   button: `ring-white ring-1.5 p-4 ml-4 bg-cyan-400  text-slate-100 rounded-full text-xs mt-2 hover:bg-cyan-600`,
   quote: `text-center `,
   quotebtn: `ml-4 pt-2.5 text-center pr-5 `,
+  exitbtn: `pt-2`,
   count: `text-center font-bold    p-2`,
 };
 
@@ -35,32 +37,25 @@ function App() {
   const [input, setInput] = useState("");
   const [quote, setQuote] = useState("");
   const [author, setAuthor] = useState("");
-
- 
-
+  const [toggle, setToggle] = useState(true);
 
   // Create todo
   const createTodo = async (e) => {
     e.preventDefault(e);
-    if (input === '') {
+    if (input === "") {
       alert("Please enter a valid todo");
-      return
-    }else{
-      setInput("")
+      return;
+    } else {
+      setInput("");
       await addDoc(collection(db, "TodoApp"), {
         text: input,
         completed: false,
-       
-        
-      })
-    } if(input.length >2){
-        setInput('')
+      });
     }
-  
-  
-
+    if (input.length > 2) {
+      setInput("");
+    }
   };
-
 
   // Read todo from firebase
   useEffect(() => {
@@ -82,7 +77,6 @@ function App() {
     });
   };
 
-  
   // Delete todo
   const deleteTodo = async (id) => {
     await deleteDoc(doc(db, "TodoApp", id));
@@ -95,6 +89,7 @@ function App() {
         console.log(res);
         setQuote(res.data.content);
         setAuthor(res.data.author);
+        console.log(toggle);
       })
       .catch((error) => {
         console.log(error);
@@ -102,26 +97,52 @@ function App() {
   };
 
   return (
+    
     <div className={style.bg}>
       <div className={style.banner}>
         <div>
           <>
-            {quote.length < 1 ? (
-              <p>Get the quote of the day </p>
-            ) : (
-              <p className={style.qoute}>
-                {quote}  {author}
-              </p>
-            )}{" "}
+            {toggle && (
+              <>
+                {quote.length < 1 ? (
+                  <>
+                <p>Get the quote of the day </p>
+                <button onClick={getQuotes} className={style.quotebtn}>
+                  {" "}
+                  <BsFillArrowRightCircleFill />
+                </button>
+              </>
+                ) : (
+                  <>
+                    <p className={style.qoute}>
+                      {quote} {author}
+                    </p>
+
+                    <button
+                      className={style.exitbtn}
+                      onClick={() => setToggle(!toggle) }
+                    >
+                      {" "}
+                      <AiFillCloseCircle size={20} />
+                    </button>
+                  </>
+                )}
+              </>
+            )}
           </>
         </div>
         <div>
           {" "}
           <>
-            <button className={style.quotebtn} onClick={getQuotes}>
-              {" "}
-              <BsFillArrowRightCircleFill />
-            </button>
+            {!toggle && (
+              <>
+                <p>Get the quote of the day </p>
+                <button onClick={({getQuotes})} onSubmit={() => setToggle(!toggle) } className={style.quotebtn}>
+                  {" "}
+                  <BsFillArrowRightCircleFill />
+                </button>
+              </>
+            )}
           </>
         </div>
       </div>
@@ -137,7 +158,7 @@ function App() {
             type="text"
             placeholder="Add Todo"
           />
-          <button  className={style.button}>
+          <button className={style.button}>
             <AiOutlinePlus size={30} />
           </button>
         </form>
