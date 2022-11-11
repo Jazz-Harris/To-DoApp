@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BsFillArrowRightCircleFill } from "react-icons/bs";
-import { AiFillCloseCircle } from "react-icons/ai";
+import { BsFillChatQuoteFill } from "react-icons/bs";
 import Todo from "./Todo";
 import { db } from "./firebase";
 import {
@@ -25,9 +25,9 @@ const style = {
   form: `flex justify-between m-5 px-4 z-2 `,
   input: ` focus:outline-none focus:border-cyan-400 focus:border-2 border-2 p-2 w-full text-xl  shadow-md rounded-lg mt-2`,
   button: `ring-white ring-1.5 p-4 ml-4 bg-cyan-400  text-slate-100 rounded-full text-xs mt-2 hover:bg-cyan-600`,
-  quote: `text-center `,
-  quotebtn: `ml-4 pt-2.5 text-center pr-5 `,
-  exitbtn: `pt-2`,
+  quote: `text-center flex 1 `,
+  quotebtn: `ml-4 pt-2 text-center flex 1 pr-5 `,
+  exitbtn: `pt-2 flex 1`,
   count: `text-center font-bold    p-2`,
 };
 
@@ -86,10 +86,10 @@ function App() {
     axios
       .get("https://api.quotable.io/random")
       .then((res) => {
-        console.log(res);
+     
         setQuote(res.data.content);
         setAuthor(res.data.author);
-        console.log(toggle);
+      
       })
       .catch((error) => {
         console.log(error);
@@ -97,53 +97,34 @@ function App() {
   };
 
   return (
-    
     <div className={style.bg}>
       <div className={style.banner}>
         <div>
           <>
             {toggle && (
               <>
-                {quote.length < 1 ? (
-                  <>
-                <p>Get the quote of the day </p>
-                <button onClick={getQuotes} className={style.quotebtn}>
-                  {" "}
-                  <BsFillArrowRightCircleFill />
-                </button>
-              </>
-                ) : (
-                  <>
-                    <p className={style.qoute}>
-                      {quote} {author}
-                    </p>
+              <div>
+              <p className={style.qoute}>
+                  {quote} {author}
+                </p>
 
-                    <button
-                      className={style.exitbtn}
-                      onClick={() => setToggle(!toggle) }
-                    >
-                      {" "}
-                      <AiFillCloseCircle size={20} />
-                    </button>
-                  </>
-                )}
+              </div>
+               <div>
+               <button onClick={getQuotes} className={style.quotebtn}>
+                  {" "}
+                  <BsFillArrowRightCircleFill size={26} />
+                </button>
+               </div>
+               
               </>
             )}
           </>
         </div>
-        <div>
-          {" "}
-          <>
-            {!toggle && (
-              <>
-                <p>Get the quote of the day </p>
-                <button onClick={({getQuotes})} onSubmit={() => setToggle(!toggle) } className={style.quotebtn}>
-                  {" "}
-                  <BsFillArrowRightCircleFill />
-                </button>
-              </>
-            )}
-          </>
+        <div className=" flex 1">
+          <button className={style.exitbtn} onClick={() => setToggle(!toggle)}>
+            {" "}
+            <BsFillChatQuoteFill size={30} />
+          </button>
         </div>
       </div>
 
