@@ -25,7 +25,7 @@ const style = {
   form: `flex justify-between m-5 px-4 z-2 `,
   input: ` focus:outline-none focus:border-cyan-400 focus:border-2 border-2 p-2 w-full text-xl  shadow-md rounded-lg mt-2`,
   button: `ring-white ring-1.5 p-4 ml-4 bg-cyan-400  text-slate-100 rounded-full text-xs mt-2 hover:bg-cyan-600`,
-  quote: `text-center pb-4 mt-4`,
+  quote: `text-center  `,
   quotebtn: `  `,
   exitbtn: ``,
   count: `text-center font-bold    p-2`,
@@ -113,7 +113,7 @@ function App() {
                 </button>
                 </div>
                 
-              <div className="col-span-3 mx-2 text-center mt-14 "> <p className={style.qoute}>
+              <div className="col-span-3 mx-2 text-center mt-20 "> <p className={style.qoute}>
                   {quote} {author}
                 </p></div>
                
