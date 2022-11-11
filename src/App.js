@@ -18,7 +18,7 @@ import axios from "axios";
 
 const style = {
   bg: `w-screen `,
-  banner: `w-screen bg-slate-800 text-white sm:text-sm md:text-md   sm:h-12 md:h-14 font-bold top-0 p-2 h-fit m-auto flex pb-4 rounded-sm  items-center justify-center grid grid-cols-3 content-between`,
+  banner: `w-screen bg-slate-800 text-white sm:text-sm md:text-md lg:text-2xl  font-bold top-0 p-2 h-fit m-auto flex pb-4 rounded-sm  items-center justify-center grid grid-cols-3 content-between`,
   container: `bg-slate-100 bg-opacity-0 md:bg-opacity-100 md:max-w-[500px] md:w-full m-auto mt-20 rounded-md md:shadow-2xl p-4 z-0`,
   heading: `text-6xl font-bold text-center  mb-4 text-gray-800 p-2`,
   line: `bg-slate-500 w-25 mx-10 mb-4 h-1 rounded`,
@@ -97,7 +97,7 @@ function App() {
   return (
     <div className={style.bg}>
       <div className={style.banner}>
-      <div className="flex 1 top-2 left-6 absolute" >
+      <div className="flex 1 top-3 left-8 absolute" >
           <button className={style.exitbtn} onClick={() => setToggle(!toggle)}>
             {" "}
             <BsFillChatQuoteFill size={30} />
@@ -106,14 +106,14 @@ function App() {
           <>
             {!toggle && (
               <>
-              <div className="flex 1 top-3 right-6 absolute">
+              <div className="flex 1 top-3 mt-1 right-8 absolute">
                 <button onClick={getQuotes} className={style.quotebtn}>
                   {" "}
                   <BsFillArrowRightCircleFill size={26} />
                 </button>
                 </div>
                 
-              <div className="col-span-3 mx-2 text-center mt-2"> <p className={style.qoute}>
+              <div className="col-span-3 mx-2 text-center mt-14 "> <p className={style.qoute}>
                   {quote} {author}
                 </p></div>
                
