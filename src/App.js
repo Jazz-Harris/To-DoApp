@@ -18,16 +18,16 @@ import axios from "axios";
 
 const style = {
   bg: `w-screen `,
-  banner: `w-screen bg-slate-800 text-white sm:text-sm md:text-1xl  p-6 sm:h-14 font-bold top-0   flex items-center justify-center  `,
+  banner: `w-screen bg-slate-800 text-white sm:text-sm md:text-1xl  p-4 sm:h-14 font-bold top-0   mb-2 flex  grid grid-cols-3 content-between`,
   container: `bg-slate-100 bg-opacity-0 md:bg-opacity-100 md:max-w-[500px] md:w-full m-auto mt-20 rounded-md md:shadow-2xl p-4 z-0`,
   heading: `text-6xl font-bold text-center  mb-4 text-gray-800 p-2`,
   line: `bg-slate-500 w-25 mx-10 mb-4 h-1 rounded`,
   form: `flex justify-between m-5 px-4 z-2 `,
   input: ` focus:outline-none focus:border-cyan-400 focus:border-2 border-2 p-2 w-full text-xl  shadow-md rounded-lg mt-2`,
   button: `ring-white ring-1.5 p-4 ml-4 bg-cyan-400  text-slate-100 rounded-full text-xs mt-2 hover:bg-cyan-600`,
-  quote: `text-center flex 1 `,
-  quotebtn: `ml-4 pt-2 text-center flex 1 pr-5 `,
-  exitbtn: `pt-2 flex 1`,
+  quote: `text-center`,
+  quotebtn: `sm: `,
+  exitbtn: `ml-5 `,
   count: `text-center font-bold    p-2`,
 };
 
@@ -86,10 +86,8 @@ function App() {
     axios
       .get("https://api.quotable.io/random")
       .then((res) => {
-     
         setQuote(res.data.content);
         setAuthor(res.data.author);
-      
       })
       .catch((error) => {
         console.log(error);
@@ -99,33 +97,32 @@ function App() {
   return (
     <div className={style.bg}>
       <div className={style.banner}>
-        <div>
-          <>
-            {toggle && (
-              <>
-              <div>
-              <p className={style.qoute}>
-                  {quote} {author}
-                </p>
-
-              </div>
-               <div>
-               <button onClick={getQuotes} className={style.quotebtn}>
-                  {" "}
-                  <BsFillArrowRightCircleFill size={26} />
-                </button>
-               </div>
-               
-              </>
-            )}
-          </>
-        </div>
-        <div className=" flex 1">
+      <div >
           <button className={style.exitbtn} onClick={() => setToggle(!toggle)}>
             {" "}
             <BsFillChatQuoteFill size={30} />
           </button>
         </div>
+          <>
+            {toggle && (
+              <>
+              <div class> <p className={style.qoute}>
+                  {quote} {author}
+                </p></div>
+               
+                <div className="flex 1">
+                <button onClick={getQuotes} className={style.quotebtn}>
+                  {" "}
+                  <BsFillArrowRightCircleFill size={26} />
+                </button>
+                </div>
+                
+              </>
+            )}
+          </>
+   
+        
+        
       </div>
 
       <div className={style.container}>
