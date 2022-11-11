@@ -17,7 +17,7 @@ import axios from "axios";
 
 const style = {
   bg: `w-screen `,
-  banner: `w-screen bg-slate-800 text-white sm:text-sm md:text-1xl md:p-4 sm:h-12 font-bold top-0 md:h-10  flex items-center justify-center  p-2`,
+  banner: `w-screen bg-slate-800 text-white sm:text-sm md:text-1xl  p-6 sm:h-14 font-bold top-0   flex items-center justify-center  `,
   container: `bg-slate-100 bg-opacity-20 md:bg-opacity-100 max-w-[500px] md:w-full m-auto mt-20 rounded-md shadow-2xl p-4 z-0`,
   heading: `text-6xl font-bold text-center  mb-4 text-gray-800 p-2`,
   line: `bg-slate-500 w-25 mx-10 mb-4 h-1 rounded`,
@@ -25,7 +25,7 @@ const style = {
   input: ` focus:outline-none focus:border-cyan-400 focus:border-2 border-2 p-2 w-full text-xl  shadow-md rounded-lg mt-2`,
   button: `ring-white ring-1.5 p-4 ml-4 bg-cyan-400  text-slate-100 rounded-full text-xs mt-2 hover:bg-cyan-600`,
   quote: `text-center `,
-  quotebtn: `ml-4 pt-2.5 text-center  `,
+  quotebtn: `ml-4 pt-2.5 text-center pr-5 `,
   count: `text-center font-bold    p-2`,
 };
 
