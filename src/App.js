@@ -18,7 +18,7 @@ import axios from "axios";
 
 const style = {
   bg: `w-screen `,
-  banner: `w-screen bg-slate-800 text-white sm:text-sm md:text-md lg:text-2xl  font-bold top-0 p-2 h-fit m-auto flex pb-4 rounded-sm  items-center justify-center grid grid-cols-3 content-between`,
+  banner: `w-screen bg-slate-800 text-white sm:text-sm md:text-md lg:text-2xl  font-bold top-0 p-2 h-12 xs:h-auto m-auto flex pb-4 rounded-sm  items-center justify-center grid grid-cols-3 content-between`,
   container: `bg-slate-100 bg-opacity-0 md:bg-opacity-100 md:max-w-[500px] md:w-full m-auto mt-20 rounded-md md:shadow-2xl p-4 z-0`,
   heading: `text-6xl font-bold text-center  mb-4 text-gray-800 p-2`,
   line: `bg-slate-500 w-25 mx-10 mb-4 h-1 rounded`,
