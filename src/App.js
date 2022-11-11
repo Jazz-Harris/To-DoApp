@@ -18,16 +18,16 @@ import axios from "axios";
 
 const style = {
   bg: `w-screen `,
-  banner: `w-screen bg-slate-800 text-white sm:text-sm md:text-1xl  p-4 sm:h-14 font-bold top-0   mb-2 flex  grid grid-cols-3 content-between`,
+  banner: `w-screen bg-slate-800 text-white sm:text-sm md:text-md   sm:h-12 md:h-14 font-bold top-0 p-2 h-fit m-auto flex pb-4 rounded-sm  items-center justify-center grid grid-cols-3 content-between`,
   container: `bg-slate-100 bg-opacity-0 md:bg-opacity-100 md:max-w-[500px] md:w-full m-auto mt-20 rounded-md md:shadow-2xl p-4 z-0`,
   heading: `text-6xl font-bold text-center  mb-4 text-gray-800 p-2`,
   line: `bg-slate-500 w-25 mx-10 mb-4 h-1 rounded`,
   form: `flex justify-between m-5 px-4 z-2 `,
   input: ` focus:outline-none focus:border-cyan-400 focus:border-2 border-2 p-2 w-full text-xl  shadow-md rounded-lg mt-2`,
   button: `ring-white ring-1.5 p-4 ml-4 bg-cyan-400  text-slate-100 rounded-full text-xs mt-2 hover:bg-cyan-600`,
-  quote: `text-center`,
-  quotebtn: `sm: `,
-  exitbtn: `ml-5 `,
+  quote: `text-center pb-4 mt-4`,
+  quotebtn: `  `,
+  exitbtn: ``,
   count: `text-center font-bold    p-2`,
 };
 
@@ -97,25 +97,27 @@ function App() {
   return (
     <div className={style.bg}>
       <div className={style.banner}>
-      <div >
+      <div className="flex 1 top-2 left-6 absolute" >
           <button className={style.exitbtn} onClick={() => setToggle(!toggle)}>
             {" "}
             <BsFillChatQuoteFill size={30} />
           </button>
         </div>
           <>
-            {toggle && (
+            {!toggle && (
               <>
-              <div class> <p className={style.qoute}>
-                  {quote} {author}
-                </p></div>
-               
-                <div className="flex 1">
+              <div className="flex 1 top-3 right-6 absolute">
                 <button onClick={getQuotes} className={style.quotebtn}>
                   {" "}
                   <BsFillArrowRightCircleFill size={26} />
                 </button>
                 </div>
+                
+              <div className="col-span-3 mx-2 text-center mt-2"> <p className={style.qoute}>
+                  {quote} {author}
+                </p></div>
+               
+                
                 
               </>
             )}
